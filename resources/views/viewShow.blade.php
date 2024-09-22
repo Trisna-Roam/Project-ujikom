@@ -1,4 +1,4 @@
-@extends('layout.app')
+@extends('userLayout.app')
 
 @section('title', 'Detail Lagu')
 
@@ -8,11 +8,11 @@
     <div class="row">
         <div class="col mb-3">
             <label class="labels">Judul</label>
-            <input type="text" name="title" class="form-control" placeholder="Title" value="{{ $product->title }}" readonly>
+            <input type="text" name="title" class="form-control" placeholder="Title" value="{{ $product->title }}" readonly >
         </div>
         <div class="col mb-3">
             <label class="labels">Artis</label>
-            <input type="text" name="artist" class="form-control" placeholder="Artist" value="{{ $product->artist }}" readonly >
+            <input type="text" name="artist" class="form-control" placeholder="Artist" value="{{ $product->artist }}" readonly>
         </div>
     </div>
     <div class="row">

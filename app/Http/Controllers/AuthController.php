@@ -29,7 +29,7 @@ class AuthController extends Controller
                 'name' => $request->name,
                 'email' => $request->email,
                 'password' => Hash::make($request->password),
-                'level' => 'admin'
+                'level' => 'user'
             ]);
 
             return redirect()->route('login');
@@ -42,23 +42,30 @@ class AuthController extends Controller
         }
 
         public function loginAction(Request $request) 
-        {
-            Validator::make($request->all(), [
-                'email' => 'required|email',
-                'password' => 'required'
-            ])->validate();
+    {
+        Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required'
+        ])->validate();
 
-            if (!Auth::attempt($request->only('email','password'), $request->boolean('remember')))
-                {
-                    throw ValidationException::withMessages([
-                        'email' => trans('auth.failed')
-                    ]);
-                }
-                $request->session()->regenerate();
+        if (!Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+            throw ValidationException::withMessages([
+                'email' => trans('auth.failed')
+            ]);
+        }
 
-                return redirect()->route('dashboard');
-            
-            }
+        $request->session()->regenerate();
+
+        $user = Auth::user();
+        if ($user->level == 'admin') {
+            return redirect()->route('dashboard'); // Admin ke dashboard
+        } elseif ($user->level == 'user') {
+            return redirect()->route('view.index'); // Arahkan User ke halaman index
+        }
+
+        return redirect('/'); // Default redirect jika tidak ada level
+    }
+
 
             public function logout(Request $request)
             {

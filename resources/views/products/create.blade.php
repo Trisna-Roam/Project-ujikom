@@ -26,7 +26,7 @@
     <div class="row">
         <div class="d-grid">
             <button id="btn" class="btn btn-primary profile-button" type="submit">
-                Simpan Profile
+                Simpan Data Lagu
             </button>
         </div>
     </div>
