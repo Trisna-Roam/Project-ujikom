@@ -42,8 +42,15 @@ Web untuk menyimpan data data lagu untuk Radio
 ![ERD](https://github.com/Trisna-Roam/Project-ujikom/blob/master/ERD.png)
 
 
+
+
+
 # UML Use Case Diagram
 ![UML Use Case](https://github.com/Trisna-Roam/Project-ujikom/blob/master/UML.jpg)
+
+
+
+
 
 
 # Instalasi
@@ -57,8 +64,8 @@ cp .env.example .env
 
 DB_CONNECTION=mysql  
 DB_HOST=127.0.0.1  
-DB_PORT=5432  
-DB_DATABASE=CRUD-ukk  
+DB_PORT=3306  
+DB_DATABASE=crud-ukk  
 DB_USERNAME=root  
 DB_PASSWORD=
 
